@@ -1,0 +1,33 @@
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/**/*.db
+backend/**/*.db-shm
+backend/**/*.db-wal
+backend/**/wwwroot/uploads/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vs/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Environment
+.env
+*.env.local
+
+# Old deploy scripts (contain credentials)
+server_deploy.py
+server_setup.py
+
+# Claude
+.claude/

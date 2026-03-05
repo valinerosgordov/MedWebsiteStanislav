@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nutrition-backend
+    restart: unless-stopped
+    volumes:
+      - backend-data:/app/data
+      - backend-uploads:/app/wwwroot/uploads
+    environment:
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/registration.db
+      - Jwt__Secret=${JWT_SECRET}
+      - Jwt__Issuer=RegistrationApp
+      - Jwt__Audience=RegistrationApp
+      - Jwt__ExpirationInHours=24
+      - AdminSeed__Email=${ADMIN_EMAIL:-admin@admin.com}
+      - AdminSeed__Password=${ADMIN_PASSWORD:-Admin123!}
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nutrition-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+volumes:
+  backend-data:
+  backend-uploads:
+
+networks:
+  app-network:
+    driver: bridge
