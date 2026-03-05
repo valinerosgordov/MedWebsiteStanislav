@@ -164,7 +164,7 @@ export default function PrivacyPage() {
                 <li><strong>ИНН:</strong> 9728169432</li>
                 <li><strong>Адрес:</strong> г. Москва, ул. Новый Арбат, д.21</li>
                 <li><strong>Email:</strong> federation-pmn@mail.ru</li>
-                <li><strong>Телефон:</strong> +7 985 621 15 45</li>
+                <li><strong>Телефон:</strong> +7 985 469 80 00</li>
               </ul>
             </div>
 

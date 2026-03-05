@@ -37,9 +37,9 @@ export default function Footer() {
             </nav>
             <nav className="footer__nav-col">
               <h4 className="footer__nav-title">Контакты</h4>
-              <a href="tel:+79856211545" className="footer__link">+7 985 621 15 45</a>
+              <a href="tel:+79854698000" className="footer__link">+7 985 469 80 00</a>
               <a href="mailto:federation-pmn@mail.ru" className="footer__link">federation-pmn@mail.ru</a>
-              <a href="https://wa.me/79856211545" target="_blank" rel="noopener noreferrer" className="footer__link">WhatsApp</a>
+              <a href="https://t.me/federation2026" target="_blank" rel="noopener noreferrer" className="footer__link">Telegram</a>
               <Link to="/contacts" className="footer__link">Все контакты</Link>
             </nav>
           </div>

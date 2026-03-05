@@ -27,7 +27,7 @@
   --color-error: #d9534f;
   --color-success: #50846e;
   --color-border: #ddd9d4;
-  --color-whatsapp: #25D366;
+  --color-telegram: #2AABEE;
   --radius-sm: 5px;
   --radius-md: 10px;
   --radius-lg: 15px;
@@ -1291,8 +1291,8 @@ img {
   color: inherit;
 }
 
-.contact-card--whatsapp:hover {
-  border-color: var(--color-whatsapp);
+.contact-card--telegram:hover {
+  border-color: var(--color-telegram);
 }
 
 .contact-card__icon {
@@ -1305,8 +1305,8 @@ img {
   justify-content: center;
 }
 
-.contact-card__icon--whatsapp {
-  color: var(--color-whatsapp);
+.contact-card__icon--telegram {
+  color: var(--color-telegram);
 }
 
 .contact-card__icon svg {
