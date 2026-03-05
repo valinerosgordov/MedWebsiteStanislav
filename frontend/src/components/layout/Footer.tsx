@@ -15,7 +15,7 @@ export default function Footer() {
             </div>
             <p className="footer__org-name">
               Автономная некоммерческая организация<br />
-              &laquo;Федерация специалистов превентивной медицины и питания&raquo;
+              &laquo;Федерация специалистов превентивного здоровья и питания&raquo;
             </p>
             <p className="footer__inn">ИНН: 9728169432</p>
           </div>

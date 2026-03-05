@@ -9,7 +9,7 @@ export default function HomePage() {
         <div className="hero__content">
           <h1 className="hero__title">
             Федерация специалистов<br />
-            <span>превентивной медицины и питания</span>
+            <span>превентивного здоровья и питания</span>
           </h1>
           <p className="hero__subtitle">
             Профессиональное сообщество, формирующее ответственную и научно-обоснованную
@@ -52,7 +52,7 @@ export default function HomePage() {
             <div className="split-section__content">
               <span className="badge">О Федерации</span>
               <h2 className="h2">Профессиональное объединение специалистов и организаций</h2>
-              <p className="text-lg">Федерация — это профессиональное объединение специалистов и организаций в сфере превентивной медицины, оздоровления и здорового образа жизни. Мы формируем экспертное сообщество, развиваем стандарты качества и объединяем науку, практику и бизнес.</p>
+              <p className="text-lg">Федерация — это профессиональное объединение специалистов и организаций в сфере превентивного здоровья, оздоровления и здорового образа жизни. Мы формируем экспертное сообщество, развиваем стандарты качества и объединяем науку, практику и бизнес.</p>
               <Link to="/federation" className="btn btn--outline">Подробнее о нас</Link>
             </div>
             <div className="split-section__quote">
@@ -71,7 +71,7 @@ export default function HomePage() {
           <div className="section-header"><span className="badge">Деятельность</span><h2 className="h2">Ключевые направления</h2></div>
           <div className="features-grid">
             {[
-              { icon: '\u{1F52C}', title: 'Превентивная медицина', desc: 'Развитие превентивной медицины, нутрициологии и здорового образа жизни' },
+              { icon: '\u{1F52C}', title: 'Превентивное здоровье', desc: 'Развитие превентивного здоровья, нутрициологии и здорового образа жизни' },
               { icon: '\u{1F4CB}', title: 'Стандарты и этика', desc: 'Содействие формированию профессиональных стандартов и этики специалистов' },
               { icon: '\u{1F4DA}', title: 'Грамотность населения', desc: 'Повышение уровня грамотности населения в области питания и ЗОЖ' },
               { icon: '\u{1F3E5}', title: 'Рынок wellness-услуг', desc: 'Развитие цивилизованного рынка wellness-услуг, БАД и функционального питания' },
@@ -101,7 +101,7 @@ export default function HomePage() {
             </article>
             <article className="news-card">
               <div className="news-card__date">12.02.2026</div>
-              <h3 className="news-card__title">В России зарегистрирована Федерация специалистов превентивной медицины и питания</h3>
+              <h3 className="news-card__title">В России зарегистрирована Федерация специалистов превентивного здоровья и питания</h3>
               <p className="news-card__text">Организация планирует участвовать в разработке профстандарта нутрициолога, аккредитации обучения профильных врачей и защите потребителей.</p>
               <div className="news-card__footer"><span className="news-card__source">МедВестник</span></div>
             </article>
@@ -114,7 +114,7 @@ export default function HomePage() {
         <div className="container">
           <div className="cta-block">
             <h2 className="h2 h2--white">Присоединяйтесь к экосистеме</h2>
-            <p className="text-lg text--white-muted">Федерация объединяет специалистов, профессиональные сообщества, организации и бренды в сфере превентивной медицины и здорового образа жизни.</p>
+            <p className="text-lg text--white-muted">Федерация объединяет специалистов, профессиональные сообщества, организации и бренды в сфере превентивного здоровья и здорового образа жизни.</p>
             <div className="cta-block__buttons">
               <Link to="/register" className="btn btn--white">Вступить в Федерацию</Link>
               <Link to="/partnerstvo" className="btn btn--white-outline">Узнать о партнерстве</Link>

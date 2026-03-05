@@ -108,7 +108,7 @@ export default function CooperationPage() {
           <h1 className="page-header__title">Формы сотрудничества</h1>
           <p className="page-header__subtitle">
             Мы предлагаем различные формы сотрудничества для организаций и специалистов
-            в сфере превентивной медицины и здорового образа жизни
+            в сфере превентивного здоровья и здорового образа жизни
           </p>
         </div>
       </section>
