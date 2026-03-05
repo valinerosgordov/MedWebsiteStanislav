@@ -189,6 +189,10 @@ public class ProfileService(AppDbContext dbContext) : IProfileService
     public async Task<Result<List<UserProfileDto>>> SearchSpecialistsAsync(
         string? query, CancellationToken ct = default)
     {
+        // Require a search query — never return the full list
+        if (string.IsNullOrWhiteSpace(query) || query.Trim().Length < 2)
+            return new List<UserProfileDto>();
+
         // Load all profiles into memory first because SQLite's lower() does not handle Cyrillic.
         // Client-side filtering with StringComparison.OrdinalIgnoreCase works correctly for all Unicode.
         var allProfiles = await dbContext.UserProfiles
@@ -199,22 +203,19 @@ public class ProfileService(AppDbContext dbContext) : IProfileService
             .ToListAsync(ct)
             .ConfigureAwait(false);
 
-        if (!string.IsNullOrWhiteSpace(query))
-        {
-            var q = query.Trim();
-            var numericQuery = q.TrimStart('#');
-            var isNumeric = int.TryParse(numericQuery, out var memberNum);
+        var q = query.Trim();
+        var numericQuery = q.TrimStart('#');
+        var isNumeric = int.TryParse(numericQuery, out var memberNum);
 
-            allProfiles = allProfiles.Where(p =>
-                (isNumeric && p.MemberNumber == memberNum) ||
-                Contains(p.FirstName, q) ||
-                Contains(p.LastName, q) ||
-                Contains(p.MiddleName, q) ||
-                Contains(p.Education, q) ||
-                Contains(p.Workplace, q) ||
-                Contains(p.User.Email, q))
-                .ToList();
-        }
+        allProfiles = allProfiles.Where(p =>
+            (isNumeric && p.MemberNumber == memberNum) ||
+            Contains(p.FirstName, q) ||
+            Contains(p.LastName, q) ||
+            Contains(p.MiddleName, q) ||
+            Contains(p.Education, q) ||
+            Contains(p.Workplace, q) ||
+            Contains(p.User.Email, q))
+            .ToList();
 
         return allProfiles.Take(50).Select(MapToDto).ToList();
     }

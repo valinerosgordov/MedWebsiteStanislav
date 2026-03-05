@@ -227,8 +227,9 @@ static async Task SeedDemoSpecialistsAsync(UserManager<ApplicationUser> userMana
         },
     };
 
-    var maxMember = await dbContext.UserProfiles
-        .MaxAsync(p => (int?)p.MemberNumber) ?? 0;
+    var existingNumbers = await dbContext.UserProfiles
+        .Select(p => p.MemberNumber).ToListAsync();
+    var rng = Random.Shared;
 
     foreach (var spec in specialists)
     {
@@ -248,12 +249,16 @@ static async Task SeedDemoSpecialistsAsync(UserManager<ApplicationUser> userMana
 
         await userManager.AddToRoleAsync(user, "User");
 
-        maxMember++;
+        int memberNumber;
+        do { memberNumber = rng.Next(10000, 100000); }
+        while (existingNumbers.Contains(memberNumber));
+        existingNumbers.Add(memberNumber);
+
         var profile = new UserProfile
         {
             Id = Guid.NewGuid(),
             UserId = user.Id,
-            MemberNumber = maxMember,
+            MemberNumber = memberNumber,
             FirstName = spec.FirstName,
             LastName = spec.LastName,
             MiddleName = spec.MiddleName,

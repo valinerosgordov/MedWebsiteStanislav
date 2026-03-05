@@ -24,10 +24,14 @@ export default function RegistryPage() {
 
   const handleSearch = async (e?: React.FormEvent) => {
     e?.preventDefault();
+    if (query.trim().length < 2) {
+      setError('Введите минимум 2 символа для поиска');
+      return;
+    }
     setLoading(true);
     setError('');
     try {
-      const { data } = await searchSpecialists(query || undefined);
+      const { data } = await searchSpecialists(query);
       setResults(data);
       setSearched(true);
     } catch {
@@ -50,8 +54,8 @@ export default function RegistryPage() {
           <span className="badge badge--light">Реестр Федерации</span>
           <h1 className="registry-hero__title">Реестр специалистов</h1>
           <p className="registry-hero__subtitle">
-            Единый реестр сертифицированных специалистов в области нутрициологии
-            и превентивной медицины Федерации ПМП
+            Единый реестр сертифицированных нутрициологов и специалистов
+            в области превентивного здоровья
           </p>
         </div>
       </section>
@@ -93,9 +97,10 @@ export default function RegistryPage() {
               </div>
               <h2 className="registry-cta-card__title">Найти специалиста</h2>
               <p className="registry-cta-card__text">
-                Найдите проверенного специалиста в области нутрициологии и превентивной
-                медицины. Поиск по имени, специальности или месту работы среди
+                Найдите проверенного специалиста в области нутрициологии и превентивного
+                здоровья. Поиск по имени, специальности или месту работы среди
                 сертифицированных членов Федерации.
+                <br /><small style={{ opacity: 0.7 }}>* специалисты без медицинского образования</small>
               </p>
               <span className="registry-cta-card__link">
                 Перейти к поиску

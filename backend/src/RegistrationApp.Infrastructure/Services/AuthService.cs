@@ -43,16 +43,24 @@ public class AuthService(
 
         await userManager.AddToRoleAsync(user, "User");
 
-        // Assign next MemberNumber
-        var maxMember = await dbContext.UserProfiles
-            .MaxAsync(p => (int?)p.MemberNumber, ct)
-            .ConfigureAwait(false) ?? 0;
+        // Assign random unique MemberNumber
+        var existingNumbers = await dbContext.UserProfiles
+            .Select(p => p.MemberNumber)
+            .ToListAsync(ct)
+            .ConfigureAwait(false);
+
+        var rng = Random.Shared;
+        int memberNumber;
+        do
+        {
+            memberNumber = rng.Next(10000, 100000);
+        } while (existingNumbers.Contains(memberNumber));
 
         var profile = new UserProfile
         {
             Id = Guid.NewGuid(),
             UserId = user.Id,
-            MemberNumber = maxMember + 1
+            MemberNumber = memberNumber
         };
         dbContext.UserProfiles.Add(profile);
         await dbContext.SaveChangesAsync(ct).ConfigureAwait(false);
