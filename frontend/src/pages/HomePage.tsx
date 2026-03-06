@@ -94,16 +94,18 @@ export default function HomePage() {
           <div className="section-header"><span className="badge">Новости</span><h2 className="h2">Лента новостей</h2></div>
           <div className="news-grid">
             <article className="news-card">
+              <div className="news-card__image"><img src="/news/tass-federation.jpg" alt="ТАСС" /></div>
               <div className="news-card__date">12.02.2026</div>
               <h3 className="news-card__title">В РФ появилась федерация, которая позволит узаконить отрасль нутрициологии</h3>
               <p className="news-card__text">Приоритетом в работе организации назвали защиту потребителя и продвижение доказательного подхода в вопросах питания и профилактики заболеваний.</p>
-              <div className="news-card__footer"><span className="news-card__source">ТАСС</span></div>
+              <div className="news-card__footer"><a href="https://tass.ru/obschestvo/23315285" target="_blank" rel="noopener noreferrer" className="news-card__source news-card__source--link">ТАСС</a></div>
             </article>
             <article className="news-card">
+              <div className="news-card__image"><img src="/news/medvestnik-federation.jpg" alt="МедВестник" /></div>
               <div className="news-card__date">12.02.2026</div>
               <h3 className="news-card__title">В России зарегистрирована Федерация специалистов превентивного здоровья и питания</h3>
               <p className="news-card__text">Организация планирует участвовать в разработке профстандарта нутрициолога, аккредитации обучения профильных врачей и защите потребителей.</p>
-              <div className="news-card__footer"><span className="news-card__source">МедВестник</span></div>
+              <div className="news-card__footer"><a href="https://medvestnik.ru/content/news/V-Rossii-zaregistrirovana-Federaciya-specialistov-preventivnogo-zdorovya-i-pitaniya.html" target="_blank" rel="noopener noreferrer" className="news-card__source news-card__source--link">МедВестник</a></div>
             </article>
           </div>
         </div>
@@ -113,8 +115,8 @@ export default function HomePage() {
       <section className="section section--gradient">
         <div className="container">
           <div className="cta-block">
-            <h2 className="h2 h2--white">Присоединяйтесь к экосистеме</h2>
-            <p className="text-lg text--white-muted">Федерация объединяет специалистов, профессиональные сообщества, организации и бренды в сфере превентивного здоровья и здорового образа жизни.</p>
+            <h2 className="h2 h2--white">Присоединяйтесь к нам</h2>
+            <p className="text-lg text--white-muted">Станьте частью профессиональной экосистемы превентивного здоровья<br />и здорового образа жизни</p>
             <div className="cta-block__buttons">
               <Link to="/register" className="btn btn--white">Вступить в Федерацию</Link>
               <Link to="/partnerstvo" className="btn btn--white-outline">Узнать о партнерстве</Link>

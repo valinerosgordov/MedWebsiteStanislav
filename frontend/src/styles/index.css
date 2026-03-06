@@ -716,6 +716,19 @@ img {
   padding-top: 12px;
 }
 
+.news-card__image {
+  margin: -32px -32px 20px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+}
+
+.news-card__image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
 .news-card__source {
   font-size: 0.8rem;
   font-weight: 700;
@@ -725,6 +738,17 @@ img {
   background: rgba(80, 132, 110, 0.1);
   padding: 4px 12px;
   border-radius: 100px;
+}
+
+.news-card__source--link {
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.news-card__source--link:hover {
+  background: rgba(80, 132, 110, 0.2);
+  color: var(--color-primary-dark);
 }
 
 /* ---- CTA Block ---- */
@@ -911,6 +935,19 @@ img {
   color: var(--color-text-muted);
 }
 
+.news-article__image {
+  margin: -40px -40px 24px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+}
+
+.news-article__image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
 .news-article__source {
   font-size: 0.8rem;
   font-weight: 700;
@@ -920,6 +957,20 @@ img {
   background: rgba(80, 132, 110, 0.1);
   padding: 4px 12px;
   border-radius: 100px;
+}
+
+.news-article__source--link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.news-article__source--link:hover {
+  background: rgba(80, 132, 110, 0.2);
+  color: var(--color-primary-dark);
 }
 
 .news-article__title {
@@ -1006,6 +1057,63 @@ img {
   line-height: 1.6;
 }
 
+/* ---- Governance Page ---- */
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.governance-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.governance-card__icon {
+  width: 64px;
+  height: 64px;
+  color: var(--color-primary);
+  background: rgba(80, 132, 110, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  margin: 0 auto 16px;
+}
+
+.governance-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.governance-card__role {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.governance-card__name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.governance-card__desc {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
 /* Benefits Grid */
 .benefits-grid {
   display: grid;
@@ -1046,6 +1154,55 @@ img {
   font-size: 0.95rem;
   color: var(--color-text);
   font-weight: 500;
+}
+
+/* ---- Partners Logos ---- */
+.partners-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px 0;
+}
+
+.partners-logos__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  transition: all var(--transition);
+  min-width: 160px;
+  min-height: 80px;
+}
+
+.partners-logos__item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.partners-logos__item img {
+  max-height: 60px;
+  max-width: 180px;
+  object-fit: contain;
+  filter: grayscale(30%);
+  transition: filter var(--transition);
+}
+
+.partners-logos__item:hover img {
+  filter: grayscale(0%);
+}
+
+.partners-logos__note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: 24px;
+  font-style: italic;
 }
 
 /* ---- Cooperation Page ---- */
@@ -2145,6 +2302,25 @@ img {
   line-height: 1.2;
   margin-bottom: 20px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.registry-hero__title--large {
+  font-size: 2.4rem;
+  max-width: 750px;
+}
+
+.registry-hero__asterisk {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.6em;
+  vertical-align: super;
+}
+
+.registry-hero__footnote {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
 }
 
 .registry-hero__subtitle {

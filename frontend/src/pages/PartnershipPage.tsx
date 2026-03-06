@@ -111,6 +111,25 @@ export default function PartnershipPage() {
         </div>
       </section>
 
+      {/* Partners Logos */}
+      <section className="section section--white">
+        <div className="container">
+          <div className="section-header">
+            <span className="badge">Наши партнеры</span>
+            <h2 className="h2">Партнеры Федерации</h2>
+          </div>
+          <div className="partners-logos">
+            {/* Partner logos will be added here as agreements are signed */}
+            <a href="#" target="_blank" rel="noopener noreferrer" className="partners-logos__item">
+              <img src="/partners/placeholder.png" alt="Партнер" />
+            </a>
+          </div>
+          <p className="partners-logos__note">
+            Раздел обновляется по мере заключения партнерских соглашений
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section section--gradient">
         <div className="container">

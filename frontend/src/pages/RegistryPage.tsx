@@ -52,11 +52,11 @@ export default function RegistryPage() {
         <div className="registry-hero__bg" />
         <div className="registry-hero__content">
           <span className="badge badge--light">Реестр Федерации</span>
-          <h1 className="registry-hero__title">Реестр специалистов</h1>
-          <p className="registry-hero__subtitle">
+          <h1 className="registry-hero__title registry-hero__title--large">
             Единый реестр сертифицированных нутрициологов и специалистов
-            в области превентивного здоровья
-          </p>
+            в области превентивного здоровья<span className="registry-hero__asterisk">*</span>
+          </h1>
+          <p className="registry-hero__footnote">* специалисты без медицинского образования</p>
         </div>
       </section>
 
@@ -100,7 +100,6 @@ export default function RegistryPage() {
                 Найдите проверенного специалиста в области нутрициологии и превентивного
                 здоровья. Поиск по имени, специальности или месту работы среди
                 сертифицированных членов Федерации.
-                <br /><small style={{ opacity: 0.7 }}>* специалисты без медицинского образования</small>
               </p>
               <span className="registry-cta-card__link">
                 Перейти к поиску

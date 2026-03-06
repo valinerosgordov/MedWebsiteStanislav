@@ -148,7 +148,7 @@ export default function ActivityPage() {
       <section className="section section--gradient">
         <div className="container">
           <div className="cta-block">
-            <h2 className="h2 h2--white">Хотите стать частью нашей деятельности?</h2>
+            <h2 className="h2 h2--white">Хотите стать частью нашей экосистемы?</h2>
             <p className="text-lg text--white-muted">
               Присоединяйтесь к Федерации и внесите свой вклад в развитие отрасли превентивного здоровья и здорового образа жизни в России.
             </p>

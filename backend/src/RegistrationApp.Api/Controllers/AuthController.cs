@@ -29,4 +29,22 @@ public class AuthController(IAuthService authService) : ControllerBase
 
         return Ok(result.Value);
     }
+
+    [HttpPost("forgot-password")]
+    public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest request, CancellationToken ct)
+    {
+        await authService.ForgotPasswordAsync(request, ct);
+        return Ok(new { message = "If the email exists, a reset link has been sent." });
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword(ResetPasswordRequest request, CancellationToken ct)
+    {
+        var result = await authService.ResetPasswordAsync(request, ct);
+
+        if (!result.IsSuccess)
+            return BadRequest(new { error = result.Error!.Description });
+
+        return Ok(new { message = "Password has been reset successfully." });
+    }
 }

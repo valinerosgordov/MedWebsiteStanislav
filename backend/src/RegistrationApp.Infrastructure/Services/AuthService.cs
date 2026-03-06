@@ -16,10 +16,13 @@ namespace RegistrationApp.Infrastructure.Services;
 public class AuthService(
     UserManager<ApplicationUser> userManager,
     IConfiguration configuration,
-    AppDbContext dbContext) : IAuthService
+    AppDbContext dbContext,
+    IEmailService emailService) : IAuthService
 {
     private static readonly Error InvalidCredentials = new("Auth.InvalidCredentials", "Invalid email or password.");
     private static readonly Error EmailTaken = new("Auth.EmailTaken", "Email is already registered.");
+    private static readonly Error UserNotFound = new("Auth.UserNotFound", "User not found.");
+    private static readonly Error ResetFailed = new("Auth.ResetFailed", "Failed to reset password.");
 
     public async Task<Result<AuthResponse>> RegisterAsync(RegisterRequest request, CancellationToken ct = default)
     {
@@ -82,6 +85,35 @@ public class AuthService(
         var role = roles.FirstOrDefault() ?? "User";
 
         return GenerateToken(user, role);
+    }
+
+    public async Task<Result<string>> ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default)
+    {
+        var user = await userManager.FindByEmailAsync(request.Email);
+        if (user is null)
+            return "OK"; // Don't reveal if user exists
+
+        var token = await userManager.GeneratePasswordResetTokenAsync(user);
+
+        await emailService.SendPasswordResetEmailAsync(request.Email, token, ct).ConfigureAwait(false);
+
+        return "OK";
+    }
+
+    public async Task<Result<string>> ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default)
+    {
+        var user = await userManager.FindByEmailAsync(request.Email);
+        if (user is null)
+            return UserNotFound;
+
+        var result = await userManager.ResetPasswordAsync(user, request.Token, request.NewPassword);
+        if (!result.Succeeded)
+        {
+            var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+            return new Error("Auth.ResetFailed", errors);
+        }
+
+        return "OK";
     }
 
     private AuthResponse GenerateToken(ApplicationUser user, string role)

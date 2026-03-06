@@ -20,6 +20,8 @@ import CabinetPage from './pages/CabinetPage';
 import AdminPage from './pages/AdminPage';
 import AdminUserDetailPage from './pages/AdminUserDetailPage';
 import SpecialistPage from './pages/SpecialistPage';
+import GovernancePage from './pages/GovernancePage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -34,6 +36,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/federation" element={<AboutPage />} />
               <Route path="/deyatelnost" element={<ActivityPage />} />
+              <Route path="/organy-upravleniya" element={<GovernancePage />} />
               <Route path="/news" element={<NewsPage />} />
               <Route path="/partnerstvo" element={<PartnershipPage />} />
               <Route path="/sotrudnichestvo" element={<CooperationPage />} />
@@ -43,6 +46,7 @@ export default function App() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/cabinet" element={<CabinetPage />} />

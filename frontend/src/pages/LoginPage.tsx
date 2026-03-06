@@ -67,6 +67,9 @@ export default function LoginPage() {
         </form>
 
         <p className="auth-card__footer">
+          <Link to="/forgot-password" className="auth-card__link">Забыли пароль?</Link>
+        </p>
+        <p className="auth-card__footer">
           Нет аккаунта? <Link to="/register" className="auth-card__link">Зарегистрироваться</Link>
         </p>
       </div>

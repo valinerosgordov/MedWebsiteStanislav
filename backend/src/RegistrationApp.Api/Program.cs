@@ -51,6 +51,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.AddSingleton<IEmailService, SmtpEmailService>();
 
 // CORS
 var corsOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>()

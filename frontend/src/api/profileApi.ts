@@ -10,9 +10,7 @@ export const updateProfile = (data: UpdateProfileRequest) =>
 export const uploadPhoto = (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
-  return api.post<{ photoUrl: string }>('/api/profile/photo', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  return api.post<{ photoUrl: string }>('/api/profile/photo', formData);
 };
 
 export const addEducation = (data: AddEducationRequest) =>
@@ -24,7 +22,5 @@ export const deleteEducation = (id: string) =>
 export const uploadDiploma = (educationId: string, file: File) => {
   const formData = new FormData();
   formData.append('file', file);
-  return api.post<{ diplomaUrl: string }>(`/api/profile/education/${educationId}/diploma`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  return api.post<{ diplomaUrl: string }>(`/api/profile/education/${educationId}/diploma`, formData);
 };
