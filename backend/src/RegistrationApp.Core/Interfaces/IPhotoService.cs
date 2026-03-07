@@ -6,4 +6,5 @@ namespace RegistrationApp.Core.Interfaces;
 public interface IPhotoService
 {
     Task<Result<string>> UploadPhotoAsync(string userId, IFormFile file, CancellationToken ct = default);
+    Task<Result<bool>> DeletePhotoAsync(string userId, CancellationToken ct = default);
 }

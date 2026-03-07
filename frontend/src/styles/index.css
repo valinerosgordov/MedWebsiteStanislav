@@ -1763,6 +1763,16 @@ img {
   color: var(--color-primary-light);
 }
 
+.profile-photo__delete {
+  color: #c0392b;
+  border-color: #c0392b;
+}
+
+.profile-photo__delete:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
 .profile-photo__hint {
   font-size: 0.75rem;
   color: var(--color-text-light);

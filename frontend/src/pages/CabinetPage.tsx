@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getProfile, updateProfile, uploadPhoto, addEducation, deleteEducation, uploadDiploma } from '../api/profileApi';
+import { useEffect, useState, useRef } from 'react';
+import { getProfile, updateProfile, uploadPhoto, deletePhoto, addEducation, deleteEducation, uploadDiploma } from '../api/profileApi';
 import { API_BASE, formatMemberNumber } from '../utils/constants';
 import type { UserProfile, UpdateProfileRequest, AddEducationRequest } from '../types/profile';
 
@@ -11,6 +11,7 @@ export default function CabinetPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [photoError, setPhotoError] = useState(false);
+  const photoInputRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState<UpdateProfileRequest>({
     firstName: null,
@@ -88,6 +89,21 @@ export default function CabinetPage() {
       setTimeout(() => setSuccess(''), 3000);
     } catch {
       setError('Ошибка загрузки фото');
+    } finally {
+      if (photoInputRef.current) photoInputRef.current.value = '';
+    }
+  };
+
+  const handleDeletePhoto = async () => {
+    if (!confirm('Удалить фото профиля?')) return;
+    try {
+      await deletePhoto();
+      setProfile((prev) => prev ? { ...prev, photoUrl: null } : null);
+      setPhotoError(false);
+      setSuccess('Фото удалено');
+      setTimeout(() => setSuccess(''), 3000);
+    } catch {
+      setError('Ошибка удаления фото');
     }
   };
 
@@ -198,6 +214,7 @@ export default function CabinetPage() {
                 <div className="profile-photo">
                   {profile?.photoUrl && !photoError ? (
                     <img
+                      key={profile.photoUrl}
                       src={`${API_BASE}${profile.photoUrl}`}
                       alt="Фото профиля"
                       className="profile-photo__img"
@@ -220,12 +237,26 @@ export default function CabinetPage() {
                   </svg>
                   Загрузить фото
                   <input
+                    ref={photoInputRef}
                     type="file"
-                    accept=".jpg,.jpeg,.png,.webp"
+                    accept="image/*"
                     onChange={handlePhotoUpload}
                     hidden
                   />
                 </label>
+                {editing && profile?.photoUrl && !photoError && (
+                  <button
+                    type="button"
+                    className="btn btn--outline btn--sm profile-photo__delete"
+                    onClick={handleDeletePhoto}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" style={{ marginRight: 6 }}>
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+                    </svg>
+                    Удалить фото
+                  </button>
+                )}
                 <p className="profile-photo__hint">JPG, PNG, WebP. Макс. 5 МБ</p>
               </div>
 

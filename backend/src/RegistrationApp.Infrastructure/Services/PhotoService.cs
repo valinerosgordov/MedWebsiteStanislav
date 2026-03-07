@@ -61,4 +61,31 @@ public class PhotoService(AppDbContext dbContext, IConfiguration configuration) 
 
         return relativeUrl;
     }
+
+    public async Task<Result<bool>> DeletePhotoAsync(string userId, CancellationToken ct = default)
+    {
+        var profile = await dbContext.UserProfiles
+            .FirstOrDefaultAsync(p => p.UserId == userId, ct)
+            .ConfigureAwait(false);
+
+        if (profile is null)
+            return ProfileNotFound;
+
+        if (!string.IsNullOrEmpty(profile.PhotoUrl))
+        {
+            try
+            {
+                var oldPath = Path.Combine("wwwroot", profile.PhotoUrl.TrimStart('/'));
+                if (File.Exists(oldPath))
+                    File.Delete(oldPath);
+            }
+            catch (IOException) { /* best effort cleanup */ }
+        }
+
+        profile.PhotoUrl = null;
+        profile.UpdatedAt = DateTime.UtcNow;
+        await dbContext.SaveChangesAsync(ct).ConfigureAwait(false);
+
+        return true;
+    }
 }

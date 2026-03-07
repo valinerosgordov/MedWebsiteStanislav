@@ -47,6 +47,18 @@ public class ProfileController(IProfileService profileService, IPhotoService pho
         return Ok(new { photoUrl = result.Value });
     }
 
+    [HttpDelete("photo")]
+    public async Task<IActionResult> DeletePhoto(CancellationToken ct)
+    {
+        var userId = GetUserId();
+        var result = await photoService.DeletePhotoAsync(userId, ct);
+
+        if (!result.IsSuccess)
+            return BadRequest(new { error = result.Error!.Description });
+
+        return Ok();
+    }
+
     [HttpPost("education")]
     public async Task<IActionResult> AddEducation(AddEducationRequest request, CancellationToken ct)
     {

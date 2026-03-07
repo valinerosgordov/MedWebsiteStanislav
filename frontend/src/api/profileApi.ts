@@ -13,6 +13,9 @@ export const uploadPhoto = (file: File) => {
   return api.post<{ photoUrl: string }>('/api/profile/photo', formData);
 };
 
+export const deletePhoto = () =>
+  api.delete('/api/profile/photo');
+
 export const addEducation = (data: AddEducationRequest) =>
   api.post<EducationEntry>('/api/profile/education', data);
 
