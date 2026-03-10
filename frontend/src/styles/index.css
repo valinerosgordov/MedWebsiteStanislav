@@ -1103,20 +1103,25 @@ img {
   text-align: center;
 }
 
-.governance-card__icon {
-  width: 64px;
-  height: 64px;
-  color: var(--color-primary);
-  background: rgba(80, 132, 110, 0.1);
+.governance-card__photo {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  background: #edeae5;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
-  margin: 0 auto 16px;
 }
 
-.governance-card__icon svg {
+.governance-card__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.governance-card__photo-svg {
   width: 100%;
   height: 100%;
 }

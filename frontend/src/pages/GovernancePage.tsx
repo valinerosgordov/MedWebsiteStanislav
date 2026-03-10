@@ -1,14 +1,35 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { searchSpecialists } from '../api/registryApi';
+import { API_BASE } from '../utils/constants';
 
 const governanceMembers = [
   {
     role: 'Руководитель Федерации',
-    name: 'Писарева Ирина',
+    name: 'Писарева Ирина Александровна',
+    searchName: 'Писарева',
     desc: 'Стратегическое развитие, взаимодействие с государственными органами и профессиональным сообществом',
   },
 ];
 
 export default function GovernancePage() {
+  const [photos, setPhotos] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    governanceMembers.forEach(async (member) => {
+      if (!member.searchName) return;
+      try {
+        const { data } = await searchSpecialists(member.searchName);
+        const match = data.find(s =>
+          `${s.lastName} ${s.firstName} ${s.middleName ?? ''}`.trim() === member.name
+        );
+        if (match?.photoUrl) {
+          setPhotos(prev => ({ ...prev, [member.name]: match.photoUrl! }));
+        }
+      } catch { /* ignore */ }
+    });
+  }, []);
+
   return (
     <div className="page-governance">
       {/* Page Header */}
@@ -32,11 +53,20 @@ export default function GovernancePage() {
           <div className="governance-grid">
             {governanceMembers.map((member, i) => (
               <div className="governance-card" key={i}>
-                <div className="governance-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                <div className="governance-card__photo">
+                  {photos[member.name] ? (
+                    <img
+                      src={`${API_BASE}${photos[member.name]}`}
+                      alt={member.name}
+                      className="governance-card__photo-img"
+                    />
+                  ) : (
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="governance-card__photo-svg">
+                      <rect width="120" height="120" rx="60" fill="#edeae5" />
+                      <circle cx="60" cy="45" r="20" fill="#a2bb94" />
+                      <ellipse cx="60" cy="95" rx="35" ry="25" fill="#a2bb94" />
+                    </svg>
+                  )}
                 </div>
                 <span className="governance-card__role">{member.role}</span>
                 <h3 className="governance-card__name">{member.name}</h3>

@@ -87,7 +87,7 @@ export default function AboutPage() {
               <blockquote>
                 <p>&laquo;Наша цель — устойчивое развитие отрасли и повышение доверия к специалистам с превентивным подходом к здоровью&raquo;</p>
                 <footer>
-                  <strong>Ирина Писарева</strong>
+                  <strong>Писарева Ирина Александровна</strong>
                   <span>Руководитель Федерации</span>
                 </footer>
               </blockquote>
