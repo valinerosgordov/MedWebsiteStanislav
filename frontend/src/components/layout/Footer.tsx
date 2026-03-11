@@ -36,7 +36,6 @@ export default function Footer() {
               <h4 className="footer__nav-title">Партнерам</h4>
               <Link to="/partnerstvo" className="footer__link">Партнерство</Link>
               <Link to="/sotrudnichestvo" className="footer__link">Сотрудничество</Link>
-              <Link to="/reestr" className="footer__link">Реестр нутрициологов</Link>
               <Link to="/register" className="footer__link">Регистрация</Link>
             </nav>
             <nav className="footer__nav-col">

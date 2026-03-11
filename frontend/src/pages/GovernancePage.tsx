@@ -7,7 +7,6 @@ const governanceMembers = [
     firstName: 'Ирина',
     middleName: 'Александровна',
     photo: '/images/pisareva.jpg',
-    desc: 'Стратегическое развитие, взаимодействие с государственными органами и профессиональным сообществом',
   },
 ];
 
@@ -48,7 +47,6 @@ export default function GovernancePage() {
                   {member.firstName}<br />
                   {member.middleName}
                 </h3>
-                <p className="governance-card__desc">{member.desc}</p>
               </div>
             ))}
           </div>

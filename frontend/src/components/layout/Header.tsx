@@ -73,9 +73,6 @@ export default function Header() {
                   <NavLink to="/organy-upravleniya" className="header__dropdown-link" onClick={() => { closeMenu(); setAboutDropdown(false); }}>
                     Органы управления
                   </NavLink>
-                  <NavLink to="/reestr" className="header__dropdown-link" onClick={() => { closeMenu(); setAboutDropdown(false); }}>
-                    Реестр нутрициологов
-                  </NavLink>
                 </div>
               )}
             </div>
