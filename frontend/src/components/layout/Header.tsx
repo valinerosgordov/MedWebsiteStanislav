@@ -77,6 +77,7 @@ export default function Header() {
               )}
             </div>
 
+            <NavLink to="/reestr" className="header__link" onClick={closeMenu}>Реестр</NavLink>
             <NavLink to="/news" className="header__link" onClick={closeMenu}>Новости</NavLink>
             <NavLink to="/partnerstvo" className="header__link" onClick={closeMenu}>Партнерство</NavLink>
             <NavLink to="/sotrudnichestvo" className="header__link" onClick={closeMenu}>Сотрудничество</NavLink>
